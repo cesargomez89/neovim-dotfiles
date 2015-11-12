@@ -6,6 +6,11 @@ function die()
   exit 1
 }
 
+link() {
+    # Force create/replace the symlink.
+    ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
+}
+
 # Add .old to any existing Vim file in the home directory
 for filepath in "${HOME}/.vim" "${HOME}/.vimrc" "${HOME}/.gvimrc"; do
   if [ -e $filepath ]; then
