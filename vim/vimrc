@@ -1,6 +1,4 @@
-if filereadable(expand("~/vim-plug"))
-  source ~/plugins.plug
-endif
+source ~/plugins
 
 " inspiration dotfiles customizations
 let mapleader=","
