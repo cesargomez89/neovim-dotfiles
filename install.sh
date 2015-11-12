@@ -15,7 +15,7 @@ for filepath in "${HOME}/.vim" "${HOME}/.vimrc" "${HOME}/.gvimrc"; do
 done
 
 # Clone Neovim dotfiles into .vim
-git clone https://github.com/cesargomez89/neovim-dotfiles" ${HOME}/.vim" \
+git clone https://github.com/cesargomez89/neovim-dotfiles.git "${HOME}/.vim" \
   || die "Could not clone the repository to ${HOME}/.vim"
 
 cd "${HOME}/.vim" || die "Could not go into the ${HOME}/.vim"
