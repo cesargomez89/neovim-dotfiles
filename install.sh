@@ -1,5 +1,7 @@
 #!/bin/bash
 
+VIM_DIRECTORY="${HOME}/.vim"
+
 function die()
 {
   echo "${@}"
@@ -8,7 +10,7 @@ function die()
 
 link() {
     # Force create/replace the symlink.
-    ln -fs "${DOTFILES_DIRECTORY}/${1}" "${HOME}/${2}"
+    ln -fs "${VIM_DIRECTORY}/${1}" "${HOME}/${2}"
 }
 
 # Add .old to any existing Vim file in the home directory
