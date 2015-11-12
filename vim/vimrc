@@ -1,7 +1,44 @@
-source ~/plugins
+call plug#begin('~/.vim/plugged')
+Plug 'tpope/vim-rails'
+Plug 'vim-ruby/vim-ruby'
+Plug 'kchmck/vim-coffee-script'
+Plug 'tpope/vim-haml'
+Plug 'chrisbra/csv.vim'
+Plug 'sheerun/rspec.vim'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'benekastah/neomake'
+Plug 'janko-m/vim-test'
+Plug 'rking/ag.vim'
+Plug 'DavidEGx/ctrlp-smarttabs'
+Plug 'morhetz/gruvbox'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+Plug 'edkolev/promptline.vim'
+Plug 'edkolev/tmuxline.vim'
+Plug 'bling/vim-airline'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'ap/vim-css-color'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-fugitive'
+Plug 'sjl/gundo.vim'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'scrooloose/nerdcommenter'
+Plug 'ervandew/supertab'
+Plug 'tpope/vim-surround'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'vim-scripts/ZoomWin'
+Plug 'thinca/vim-visualstar'
+call plug#end()
 
-" inspiration dotfiles customizations
 let mapleader=","
+
+map <leader>n :NERDTreeToggle<CR>
+
+" find merge conflict markers
+nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 if has('gui_running')
   set guifont=Droid\ Sans\ Mono\ for\ Powerline
