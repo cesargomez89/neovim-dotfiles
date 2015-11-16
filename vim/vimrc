@@ -11,7 +11,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'benekastah/neomake'
 Plug 'janko-m/vim-test'
 Plug 'rking/ag.vim'
-Plug 'DavidEGx/ctrlp-smarttabs'
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'edkolev/promptline.vim'
@@ -20,9 +19,11 @@ Plug 'bling/vim-airline'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'ap/vim-css-color'
-Plug 'kien/ctrlp.vim'
+Plug 'DavidEGx/ctrlp-smarttabs'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'sjl/gundo.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'scrooloose/nerdcommenter'
@@ -31,9 +32,25 @@ Plug 'tpope/vim-surround'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'vim-scripts/ZoomWin'
 Plug 'thinca/vim-visualstar'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 let mapleader=","
+set number
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+set smarttab
+
+set shiftwidth=2
+set tabstop=2
+set si
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_start_level = 2
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+
+
 
 map <leader>n :NERDTreeToggle<CR>
 
@@ -41,16 +58,14 @@ map <leader>n :NERDTreeToggle<CR>
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 if has('gui_running')
-  set guifont=Droid\ Sans\ Mono\ for\ Powerline
+  set guifont=Inconsolata\ for\ Powerline:h12
 endif
 
 cmap w!! w !sudo tee >/dev/null %
 :imap jj <Esc>
 
 let g:airline_powerline_fonts = 1
-let g:pencil_higher_contrast_ui = 0   " 0=low (def), 1=high
-let g:airline_theme = 'dark'
-"let g:promptline_theme = 'airline'
+let g:airline_theme = 'bubblegum'
 "
 function! AirlineInit()
   "let g:airline_section_a = airline#section#create(['mode', ' '])
