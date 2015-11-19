@@ -42,10 +42,8 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 set smarttab
+set tabstop=2 shiftwidth=2 expandtab
 
-set shiftwidth=2
-set tabstop=2
-set si
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
