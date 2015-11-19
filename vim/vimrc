@@ -1,3 +1,10 @@
+function! BuildComposer(info)
+  if a:info.status != 'unchanged' || a:info.force
+    !cargo build --release
+    UpdateRemotePlugins
+  endif
+endfunction
+
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-rails'
 Plug 'vim-ruby/vim-ruby'
@@ -10,7 +17,12 @@ Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'benekastah/neomake'
 Plug 'janko-m/vim-test'
-Plug 'rking/ag.vim'
+Plug 'mhinz/vim-grepper'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-dispatch'
+Plug 'Shougo/deoplete.nvim'
+Plug 'ervandew/supertab'
+Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'edkolev/promptline.vim'
@@ -27,19 +39,22 @@ Plug 'airblade/vim-gitgutter'
 Plug 'sjl/gundo.vim'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'scrooloose/nerdcommenter'
-Plug 'ervandew/supertab'
 Plug 'tpope/vim-surround'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'vim-scripts/ZoomWin'
 Plug 'thinca/vim-visualstar'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ryanoasis/vim-devicons'
+Plug 'tpope/vim-eunuch'
 call plug#end()
 
 let mapleader=","
 set number
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 set smarttab
 set tabstop=2 shiftwidth=2 expandtab
@@ -48,7 +63,12 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#sources#syntax#min_keyword_length = 2
 
+nnoremap <leader>ag  :Grepper! -tool ag  -open -switch
+command! -nargs=* -complete=file Ag Grepper! -tool ag -query <args>
 
 map <leader>n :NERDTreeToggle<CR>
 
