@@ -15,24 +15,30 @@ Plug 'sheerun/rspec.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
+
 Plug 'benekastah/neomake'
 Plug 'janko-m/vim-test'
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-dispatch'
 Plug 'Shougo/deoplete.nvim'
-Plug 'ervandew/supertab'
-Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+Plug 'mhinz/vim-startify'
+
 Plug 'morhetz/gruvbox'
+Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
+Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
+Plug 'mhinz/vim-janah'
+
+Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'edkolev/promptline.vim'
 Plug 'edkolev/tmuxline.vim'
 Plug 'bling/vim-airline'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'ap/vim-css-color'
-Plug 'DavidEGx/ctrlp-smarttabs'
-Plug 'ctrlpvim/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -46,6 +52,7 @@ Plug 'thinca/vim-visualstar'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-eunuch'
+Plug 'ConradIrwin/vim-bracketed-paste'
 call plug#end()
 
 let mapleader=","
@@ -53,13 +60,22 @@ set number
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
+let g:startify_bookmarks = [
+      \ { 'v': '~/.vimrc' },
+      \ { 'd': '~/.dotfiles/README.md' },
+      \ { 't': '~/.tmux.conf' },
+      \ ]
+
+let &colorcolumn=join(range(81,999),",")
+let &colorcolumn="80,".join(range(400,999),",")
+
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 
 set smarttab
 set tabstop=2 shiftwidth=2 expandtab
 
-let g:indent_guides_enable_on_vim_startup = 1
+"let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
@@ -67,10 +83,11 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let g:neocomplete#sources#syntax#min_keyword_length = 2
 
-nnoremap <leader>ag  :Grepper! -tool ag  -open -switch
-command! -nargs=* -complete=file Ag Grepper! -tool ag -query <args>
+nnoremap <leader>ag  :Grepper -tool ag  -grepprg ag --vimgrep -G '^.+\.txt'<cr>
+command! -nargs=* -complete=file Ag Grepper -tool git -query <args>
 
 map <leader>n :NERDTreeToggle<CR>
+nmap <leader>t :tabnew<CR>
 
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
@@ -83,7 +100,7 @@ cmap w!! w !sudo tee >/dev/null %
 :imap jj <Esc>
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'badwolf'
 "
 function! AirlineInit()
   "let g:airline_section_a = airline#section#create(['mode', ' '])
@@ -110,7 +127,7 @@ nmap <silent> <leader>g :TestVisit<CR>
 :nnoremap <C-l> <C-w>l
 "
 
-nmap <C-i> :CtrlPSmartTabs<CR>
+nmap <C-p> :FZF<CR>
 
 " Align by the equal sign
  map <C-a> :Tab /=<Enter>
