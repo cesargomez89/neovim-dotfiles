@@ -54,6 +54,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-eunuch'
 Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'leafgarland/typescript-vim'
+Plug 'terryma/vim-multiple-cursors'
 call plug#end()
 
 let mapleader=","
@@ -101,7 +103,9 @@ cmap w!! w !sudo tee >/dev/null %
 :imap jj <Esc>
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
+let g:airline_theme = 'jellybeans'
+let g:airline#extensions#tmuxline#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
 "
 function! AirlineInit()
   "let g:airline_section_a = airline#section#create(['mode', ' '])
