@@ -1,3 +1,4 @@
 plugged/**
 sessions/**
 !plugged/.gitkeep
+.netrwhist

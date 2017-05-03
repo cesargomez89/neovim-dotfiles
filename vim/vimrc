@@ -56,6 +56,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'leafgarland/typescript-vim'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'fntlnz/atags.vim'
 call plug#end()
 
 let mapleader=","
@@ -88,6 +89,10 @@ let g:neocomplete#sources#syntax#min_keyword_length = 2
 
 nnoremap <leader>ag  :Grepper -tool ag  -grepprg ag --vimgrep -G '^.+\.txt'<cr>
 command! -nargs=* -complete=file Ag Grepper -tool git -query <args>
+
+let g:atags_build_commands_list = ['ctags -R --exclude=log --exclude=tmp --exclude=vendor --exclude=coverage']
+
+autocmd BufWritePost * call atags#generate()
 
 map <leader>n :NERDTreeToggle<CR>
 nmap <leader>t :tabnew<CR>
@@ -170,6 +175,8 @@ endfunction
 
 let &t_SI .= WrapForTmux("\<Esc>[?2004h")
 let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 
 function! XTermPasteBegin()
   set pastetoggle=<Esc>[201~
