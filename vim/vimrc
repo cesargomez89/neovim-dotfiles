@@ -26,7 +26,7 @@ Plug 'mhinz/vim-startify'
 
 Plug 'morhetz/gruvbox'
 Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-Plug 'daylerees/colour-schemes', { 'rtp': 'vim/' }
+Plug 'jacoborus/tender.vim'
 Plug 'mhinz/vim-janah'
 
 Plug 'ervandew/supertab'
@@ -95,7 +95,6 @@ let g:atags_build_commands_list = ['ctags -R --exclude=log --exclude=tmp --exclu
 autocmd BufWritePost * call atags#generate()
 
 map <leader>n :NERDTreeToggle<CR>
-nmap <leader>t :tabnew<CR>
 
 " find merge conflict markers
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
@@ -108,7 +107,7 @@ cmap w!! w !sudo tee >/dev/null %
 :imap jj <Esc>
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'jellybeans'
+let g:airline_theme = 'tender'
 let g:airline#extensions#tmuxline#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 "
@@ -186,5 +185,5 @@ endfunction
 
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
-colo gruvbox
-set background=dark
+syntax enable
+colorscheme janah
