@@ -15,6 +15,7 @@ Plug 'sheerun/rspec.vim'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 
 Plug 'benekastah/neomake'
 Plug 'janko-m/vim-test'
