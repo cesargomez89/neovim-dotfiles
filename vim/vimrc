@@ -108,10 +108,9 @@ cmap w!! w !sudo tee >/dev/null %
 :imap jj <Esc>
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'tender'
+let g:airline_theme = 'dark'
 let g:tmuxline_preset = {
       \'a'   : '[#S]',
-      \'b'   : '  #(rvm current)',
       \'win' : '#I  #W#F',
       \'cwin': '#I  #W#F',
       \'y'   : "#(spotify_info)",
