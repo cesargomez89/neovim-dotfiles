@@ -101,7 +101,7 @@ map <leader>n :NERDTreeToggle<CR>
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 if has('gui_running')
-  set guifont=Inconsolata\ for\ Powerline:h12
+  set guifont=Inconsolata\ Nerd\ Font:h12
 endif
 
 cmap w!! w !sudo tee >/dev/null %
