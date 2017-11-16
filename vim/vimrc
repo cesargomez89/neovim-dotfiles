@@ -114,7 +114,7 @@ let g:tmuxline_preset = {
       \'win' : '#I  #W#F',
       \'cwin': '#I  #W#F',
       \'y'   : "#(spotify_info)",
-      \'z'   : '%H:%M',
+      \'z'   : ' #(cpu_percentage) | %H:%M',
       \'options': {
       \'status-justify': 'left'}
       \}
