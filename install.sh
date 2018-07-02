@@ -29,5 +29,6 @@ git clone https://github.com/cesargomez89/neovim-dotfiles.git "${HOME}/.vim" \
 cd "${HOME}/.vim" || die "Could not go into the ${HOME}/.vim"
 
 ln -fs "${VIM_DIRECTORY}/vim/vimrc"    "${HOME}/.vimrc"
+ln -fs "${VIM_DIRECTORY}/vim/vimrc"    "${HOME}/.config/nvim/init.vim"
 ln -fs "${VIM_DIRECTORY}/autoload/"    "${HOME}/.config/nvim/autoload"
 ln -fs "${VIM_DIRECTORY}/plugged/"     "${HOME}/.config/nvim/plugged"

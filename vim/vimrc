@@ -16,8 +16,14 @@ Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
+Plug 'posva/vim-vue'
+Plug 'digitaltoad/vim-pug'
+Plug 'elixir-lang/vim-elixir'
+Plug 'thinca/vim-ref'
+Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
+Plug 'slim-template/vim-slim'
 
-Plug 'benekastah/neomake'
+Plug 'neomake/neomake'
 Plug 'janko-m/vim-test'
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-repeat'
@@ -57,7 +63,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'leafgarland/typescript-vim'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'fntlnz/atags.vim'
+Plug 'ludovicchabant/vim-gutentags'
 call plug#end()
 
 let mapleader=","
@@ -90,10 +96,6 @@ let g:neocomplete#sources#syntax#min_keyword_length = 2
 
 nnoremap <leader>ag  :Grepper -tool ag  -grepprg ag --vimgrep -G '^.+\.txt'<cr>
 command! -nargs=* -complete=file Ag Grepper -tool git -query <args>
-
-let g:atags_build_commands_list = ['ctags -R --exclude=log --exclude=tmp --exclude=vendor --exclude=coverage']
-
-autocmd BufWritePost * call atags#generate()
 
 map <leader>n :NERDTreeToggle<CR>
 
@@ -128,7 +130,9 @@ function! AirlineInit()
 endfunction
 autocmd VimEnter * call AirlineInit()
 " Neovim
-autocmd! BufWritePost * Neomake
+
+call neomake#configure#automake('w')
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
