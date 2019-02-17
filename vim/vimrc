@@ -35,6 +35,9 @@ Plug 'morhetz/gruvbox'
 Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plug 'jacoborus/tender.vim'
 Plug 'mhinz/vim-janah'
+Plug 'sonph/onehalf'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'NLKNguyen/papercolor-theme'
 
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
@@ -103,7 +106,7 @@ map <leader>n :NERDTreeToggle<CR>
 nmap <silent> <leader>fc <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 
 if has('gui_running')
-  set guifont=Inconsolata\ Nerd\ Font:h12
+  set guifont=Inconsolata\ Nerd\ Font:h13
 endif
 
 cmap w!! w !sudo tee >/dev/null %
@@ -201,4 +204,5 @@ endfunction
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 syntax enable
-colorscheme janah
+set t_Co=256
+colorscheme onehalfdark
