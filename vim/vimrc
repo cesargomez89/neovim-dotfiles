@@ -29,6 +29,9 @@ Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-dispatch'
 Plug 'Shougo/deoplete.nvim'
+Plug 'etordera/deoplete-rails'
+Plug 'deoplete-plugins/deoplete-tag'
+Plug 'uplus/deoplete-solargraph'
 Plug 'mhinz/vim-startify'
 
 Plug 'morhetz/gruvbox'
@@ -88,6 +91,8 @@ set omnifunc=syntaxcomplete#Complete
 
 set smarttab
 set tabstop=2 shiftwidth=2 expandtab
+
+let deoplete#tag#cache_limit_size = 5000000
 
 "let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
