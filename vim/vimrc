@@ -22,6 +22,7 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'thinca/vim-ref'
 Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
 Plug 'slim-template/vim-slim'
+Plug 'tasn/vim-tsx'
 
 Plug 'neomake/neomake'
 Plug 'janko-m/vim-test'
@@ -70,6 +71,7 @@ Plug 'ConradIrwin/vim-bracketed-paste'
 Plug 'leafgarland/typescript-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'tpope/vim-obsession'
 call plug#end()
 
 let mapleader=","
