@@ -13,21 +13,17 @@ Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-dispatch'
 Plug 'mhinz/vim-startify'
-"Plug 'Shougo/ddc.vim'
-"Plug 'delphinus/ddc-ctags'
-"Plug 'Shougo/ddc-around'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'morhetz/gruvbox'
-Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
-Plug 'jacoborus/tender.vim'
-Plug 'mhinz/vim-janah'
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
+Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
-Plug 'NLKNguyen/papercolor-theme'
+Plug 'morhetz/gruvbox'
+Plug 'jacoborus/tender.vim'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'edkolev/promptline.vim'
@@ -77,12 +73,6 @@ set omnifunc=syntaxcomplete#Complete
 
 set smarttab
 set tabstop=2 shiftwidth=2 expandtab
-
-"call ddc#custom#patch_global('sources', ['around', 'ctags'])
-"call ddc#custom#patch_global('sourceOptions', {
-"      \ 'around': {'mark': 'A', 'maxSize': 500},
-"      \ 'ctags': {'mark': 'C'},
-"      \ })
 
 " use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
@@ -216,5 +206,10 @@ endfunction
 inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 syntax enable
-set t_Co=256
-colorscheme onehalfdark
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
+endif
+
+colorscheme spaceduck
