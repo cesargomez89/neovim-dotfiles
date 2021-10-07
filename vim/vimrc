@@ -6,44 +6,29 @@ function! BuildComposer(info)
 endfunction
 
 call plug#begin('~/.vim/plugged')
-Plug 'tpope/vim-rails'
-Plug 'vim-ruby/vim-ruby'
-Plug 'kchmck/vim-coffee-script'
-Plug 'tpope/vim-haml'
-Plug 'chrisbra/csv.vim'
-Plug 'sheerun/rspec.vim'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'pangloss/vim-javascript'
-Plug 'mxw/vim-jsx'
-Plug 'posva/vim-vue'
-Plug 'digitaltoad/vim-pug'
-Plug 'elixir-lang/vim-elixir'
-Plug 'thinca/vim-ref'
-Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
-Plug 'slim-template/vim-slim'
-Plug 'tasn/vim-tsx'
+Plug 'sheerun/vim-polyglot'
 
-Plug 'neomake/neomake'
 Plug 'janko-m/vim-test'
 Plug 'mhinz/vim-grepper'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-dispatch'
-Plug 'Shougo/deoplete.nvim'
-Plug 'etordera/deoplete-rails'
-Plug 'deoplete-plugins/deoplete-tag'
-Plug 'uplus/deoplete-solargraph'
 Plug 'mhinz/vim-startify'
+"Plug 'Shougo/ddc.vim'
+"Plug 'delphinus/ddc-ctags'
+"Plug 'Shougo/ddc-around'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 Plug 'morhetz/gruvbox'
 Plug 'zenorocha/dracula-theme', {'rtp': 'vim/'}
 Plug 'jacoborus/tender.vim'
 Plug 'mhinz/vim-janah'
-Plug 'sonph/onehalf'
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'NLKNguyen/papercolor-theme'
 
-Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'edkolev/promptline.vim'
 Plug 'edkolev/tmuxline.vim'
@@ -53,7 +38,6 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'ap/vim-css-color'
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -65,10 +49,10 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'vim-scripts/ZoomWin'
 Plug 'thinca/vim-visualstar'
 Plug 'nathanaelkane/vim-indent-guides'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-eunuch'
 Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'leafgarland/typescript-vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-obsession'
@@ -94,9 +78,24 @@ set omnifunc=syntaxcomplete#Complete
 set smarttab
 set tabstop=2 shiftwidth=2 expandtab
 
-let deoplete#tag#cache_limit_size = 5000000
+"call ddc#custom#patch_global('sources', ['around', 'ctags'])
+"call ddc#custom#patch_global('sourceOptions', {
+"      \ 'around': {'mark': 'A', 'maxSize': 500},
+"      \ 'ctags': {'mark': 'C'},
+"      \ })
 
-"let g:indent_guides_enable_on_vim_startup = 1
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
@@ -141,8 +140,14 @@ endfunction
 autocmd VimEnter * call AirlineInit()
 " Neovim
 
-call neomake#configure#automake('w')
-let g:neomake_javascript_enabled_makers = ['eslint']
+function! MyOnBattery()
+  if has('macunix')
+    return match(system('pmset -g batt'), "Now drawing from 'Battery Power'") != -1
+  elseif has('unix')
+    return readfile('/sys/class/power_supply/AC/online') == ['0']
+  endif
+  return 0
+endfunction
 
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
@@ -161,7 +166,7 @@ nmap <silent> <leader>g :TestVisit<CR>
 :nnoremap <C-l> <C-w>l
 "
 
-nmap <C-p> :FZF<CR>
+nmap <C-p> :Files<CR>
 
 " Align by the equal sign
  map <C-a> :Tab /=<Enter>

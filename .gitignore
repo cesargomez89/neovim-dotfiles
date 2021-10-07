@@ -3,3 +3,4 @@ sessions/**
 tags
 !plugged/.gitkeep
 .netrwhist
+autoload/plug.vim.old
