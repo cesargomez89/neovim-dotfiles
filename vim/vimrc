@@ -114,7 +114,7 @@ let g:tmuxline_preset = {
       \'a'   : '  #S   #(cd #{pane_current_path}; git rev-parse --abbrev-ref HEAD)',
       \'win' : '#I  #W#F',
       \'cwin': '#I  #W#F',
-      \'x'   : " #(spotify_info)",
+      \'x'   : "#(spotify_info)",
       \'y'   : " #(ruby_version)",
       \'z'   : '%H:%M',
       \'options': {
