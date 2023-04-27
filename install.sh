@@ -32,3 +32,8 @@ ln -fs "${VIM_DIRECTORY}/vim/vimrc"    "${HOME}/.config/nvim/init.vim"
 ln -fs "${VIM_DIRECTORY}/autoload/"    "${HOME}/.config/nvim/autoload"
 ln -fs "${VIM_DIRECTORY}/plugged/"     "${HOME}/.config/nvim/plugged"
 ln -fs "${VIM_DIRECTORY}/ctags.d/"     "${HOME}/.ctags.d"
+
+ln -fs "${VIM_DIRECTORY}/vim/coc-settings.json" "${HOME}/.config/nvim/coc-settings.json"
+
+nvim +'PlugInstall' +qall
+nvim +'CocInstall -sync coc-git coc-fzf-preview coc-solargraph coc-highlight' +qall
