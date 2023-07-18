@@ -248,3 +248,9 @@ if exists('+termguicolors')
 endif
 
 colorscheme spaceduck
+
+nnoremap <leader>f :NERDTreeFind<CR>
+nnoremap <leader>b :Git blame<CR>
+nnoremap <leader>pi :PlugInstall<CR>
+nnoremap <leader>pc :PlugClean<CR>
+nmap <leader>xc :let @+ = expand("%")<CR>
