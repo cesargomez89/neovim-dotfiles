@@ -48,6 +48,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-fugitive'
+Plug 'sickill/vim-monokai'
 call plug#end()
 
 let mapleader=","
@@ -247,7 +248,7 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-colorscheme spaceduck
+colorscheme monokai
 
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>b :Git blame<CR>
