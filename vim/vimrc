@@ -23,6 +23,7 @@ Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'morhetz/gruvbox'
 Plug 'jacoborus/tender.vim'
+Plug 'sickill/vim-monokai'
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'edkolev/promptline.vim'
@@ -257,7 +258,7 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-colorscheme spaceduck
+colorscheme monokai
 
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>b :Git blame<CR>
