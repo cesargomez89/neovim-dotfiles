@@ -48,7 +48,17 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-fugitive'
+Plug 'github/copilot.vim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'branch': 'canary' }
 call plug#end()
+
+lua << EOF
+require("CopilotChat").setup {
+  debug = true, -- Enable debugging
+  -- See Configuration section for rest
+}
+EOF
 
 let mapleader=","
 set number
