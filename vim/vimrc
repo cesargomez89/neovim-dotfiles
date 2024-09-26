@@ -18,12 +18,12 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-Plug 'pineapplegiant/spaceduck', { 'branch': 'main' }
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'pineapplegiant/spaceduck', { 'branch': 'main' } Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'sonph/onehalf', {'rtp': 'vim/'}
 Plug 'morhetz/gruvbox'
 Plug 'jacoborus/tender.vim'
 Plug 'sickill/vim-monokai'
+Plug 'catppuccin/nvim', { 'as': 'catppuccin' }
 
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'edkolev/promptline.vim'
@@ -258,7 +258,7 @@ if exists('+termguicolors')
   set termguicolors
 endif
 
-colorscheme monokai
+colorscheme catppuccin
 
 nnoremap <leader>f :NERDTreeFind<CR>
 nnoremap <leader>b :Git blame<CR>
